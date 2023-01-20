@@ -1,0 +1,10 @@
+bottom
+chezmoi
+fzf
+gcc
+neovim
+npm
+python-pip
+ripgrep
+rust
+wl-clipboard

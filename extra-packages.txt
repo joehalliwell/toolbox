@@ -1,5 +1,6 @@
 bottom
 chezmoi
+fd
 fzf
 gcc
 neovim

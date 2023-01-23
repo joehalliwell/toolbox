@@ -1,0 +1,2 @@
+#!/bin/bash
+chezmoi init --apply git@codeberg.org:PopeRigby/dotfiles.git

@@ -3,6 +3,7 @@ chezmoi
 fd
 fzf
 gcc
+lazygit
 neovim
 npm
 python-pip

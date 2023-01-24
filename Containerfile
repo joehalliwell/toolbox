@@ -21,7 +21,13 @@ RUN pacman -Scc --noconfirm
 # Enable sudo permission for wheel users
 RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox
 
+# Copy over scripts
+COPY scripts /usr/local/bin
+RUN chmod +x /usr/local/bin/_chezmoi_setup
+RUN chmod +x /usr/local/bin/ostree
+
 # Symlink some external binaries, for convenience
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
+RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox && \ 
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \

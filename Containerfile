@@ -23,8 +23,8 @@ RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox
 
 # Copy over scripts
 COPY scripts /usr/local/bin
-RUN chmod +x /usr/local/bin/_chezmoi_setup
-RUN chmod +x /usr/local/bin/ostree
+RUN chmod +x /usr/local/bin/_chezmoi_setup \
+             /usr/local/bin/ostree
 
 # Symlink some external binaries, for convenience
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox && \ 

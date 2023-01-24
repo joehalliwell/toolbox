@@ -1,2 +1,2 @@
 #!/bin/bash
-distrobox-host-exec sudo ostree
+distrobox-host-exec sudo ostree "$@"

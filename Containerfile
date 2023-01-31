@@ -2,8 +2,8 @@ FROM docker.io/library/archlinux:base-devel
 
 ENV NAME=archlinux-toolbox VERSION=base-devel
 LABEL com.github.containers.toolbox="true" \
-      name="$NAME" \
-      version="$VERSION"
+    name="$NAME" \
+    version="$VERSION"
 
 # Install base packages
 COPY base-packages.txt /
@@ -24,7 +24,8 @@ RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/toolbox
 # Copy over scripts
 COPY scripts /usr/local/bin
 RUN chmod +x /usr/local/bin/_chezmoi_setup \
-             /usr/local/bin/ostree
+    /usr/local/bin/ostree \
+    /usr/local/bin/systemctl
 
 # Symlink some external binaries, for convenience
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox && \ 

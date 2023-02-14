@@ -1,4 +1,5 @@
 bottom
+bubblewrap
 chezmoi
 fd
 fzf

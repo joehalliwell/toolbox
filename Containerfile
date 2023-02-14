@@ -31,4 +31,5 @@ RUN chmod +x /usr/local/bin/_chezmoi_setup \
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox && \ 
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
+    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/notify-send

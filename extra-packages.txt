@@ -11,3 +11,5 @@ python-pip
 ripgrep
 rust
 wl-clipboard
+fribidi
+fontconfig

@@ -27,6 +27,9 @@ RUN chmod +x /usr/local/bin/_chezmoi_setup \
     /usr/local/bin/ostree \
     /usr/local/bin/systemctl
 
+# Copy over /etc files
+COPY etc /etc
+
 # Symlink some external binaries, for convenience
 RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox && \ 
     ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 

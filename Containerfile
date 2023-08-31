@@ -1,6 +1,7 @@
 FROM quay.io/toolbx-images/archlinux-toolbox:latest
 
 LABEL com.github.containers.toolbox="true" \
+      org.opencontainers.image.source="https://github.com/poperigby/toolbox" \
       name="toolbox" \
       version="base-devel" \
       usage="This image is meant to be used with the toolbox/distrobox command" \

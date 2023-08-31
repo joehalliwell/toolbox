@@ -27,7 +27,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: docker.io
-          username: 'poperigby'
+          username: ${{ secrets.DOCKER_IO_USERNAME }}
           password: ${{ secrets.DOCKER_IO_TOKEN }}
 
       - name: Build and push my toolbox image
@@ -38,4 +38,4 @@ jobs:
           platforms: linux/amd64
           push: true
           no-cache: true
-          tags: docker.io/poperigby/archlinux-tool:latest
+          tags: docker.io/${{ github.repository }}:latest

@@ -3,10 +3,10 @@ name: "Build and push my toolbox image"
 permissions: read-all
 
 on:
-  push
-  workflow_dispatch
+  push:
+  workflow_dispatch:
   schedule:
-    - cron:  '0 0 * * MON'
+    - cron:  '0 0 * * *'
   
 
 jobs:

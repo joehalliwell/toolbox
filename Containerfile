@@ -12,6 +12,12 @@ COPY extra-packages.txt /
 RUN pacman -Syu --needed --noconfirm - < extra-packages.txt
 RUN rm /extra-packages.txt
 
+# Install paru from AUR
+RUN git clone https://aur.archlinux.org/paru.git /tmp/paru && \
+    cd /tmp/paru && \
+    makepkg -si --noconfirm && \
+    rm -rf /tmp/paru
+
 # Clean up cache
 RUN pacman -Scc --noconfirm
 

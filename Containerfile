@@ -12,13 +12,11 @@ COPY extra-packages.txt /
 RUN pacman -Syu --needed --noconfirm - < extra-packages.txt
 RUN rm /extra-packages.txt
 
-# Create a non-root user for makepkg
+# Create a non-root user for makepkg and switch to it
 RUN useradd -m paru
-
-# Switch to the non-root user for makepkg
 USER paru
 
-# Install paru from AUR
+# Build paru
 RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
     cd /tmp/paru && \
     makepkg -s --noconfirm
@@ -26,7 +24,11 @@ RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
 # Switch back to root
 USER root
 
-RUN pacman -U --noconfirm paru-bin-*-x86_64.pkg.tar.zst && \
+# Clean up non-root user
+RUN userdel -r paru
+
+# Install paru
+RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
     rm -rf /tmp/paru
 
 # Clean up cache

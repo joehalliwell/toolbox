@@ -12,6 +12,7 @@ lazygit
 neovim
 npm
 p7zip
+pipewire-jack
 python-pip
 python-pre-commit
 qt6-languageserver
@@ -19,4 +20,5 @@ qt6-wayland
 ripgrep
 rust
 tealdeer
+wireplumber
 wl-clipboard

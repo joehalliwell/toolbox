@@ -1,5 +1,12 @@
 FROM quay.io/toolbx-images/archlinux-toolbox:latest
 
+LABEL com.github.containers.toolbox="true" \
+      name="toolbox" \
+      version="base-devel" \
+      usage="This image is meant to be used with the toolbox/distrobox command" \
+      summary="PopeRigby's personal toolbox" \
+      maintainer="PopeRigby <poperigby@mailbox.org>"
+
 # Install extra packages
 COPY extra-packages.txt /
 RUN pacman -Syu --needed --noconfirm - < extra-packages.txt

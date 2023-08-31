@@ -21,11 +21,13 @@ USER paru
 # Install paru from AUR
 RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
     cd /tmp/paru && \
-    makepkg -si --noconfirm && \
-    rm -rf /tmp/paru
+    makepkg -s --noconfirm
 
 # Switch back to root
 USER root
+
+RUN pacman -U --noconfirm paru-bin-*-x86_64.pkg.tar.zst && \
+    rm -rf /tmp/paru
 
 # Clean up cache
 RUN pacman -Scc --noconfirm

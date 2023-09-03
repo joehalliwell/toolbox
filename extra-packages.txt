@@ -19,7 +19,7 @@ python-pre-commit
 qt6-languageserver
 qt6-wayland
 ripgrep
-rust
+rustup
 tealdeer
 wireplumber
 wl-clipboard

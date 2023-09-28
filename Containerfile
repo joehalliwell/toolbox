@@ -1,10 +1,10 @@
 FROM quay.io/toolbx-images/archlinux-toolbox:latest
 
-LABEL name="toolbox" \
-    maintainer="PopeRigby <poperigby@mailbox.org>" \
-    org.opencontainers.image.source="https://github.com/poperigby/toolbox" \
-    org.opencontainers.image.description="PopeRigby's personal toolbox" \
-    com.github.containers.toolbox="true"
+LABEL name="toolbox"
+LABEL maintainer="PopeRigby <poperigby@mailbox.org>"
+LABEL org.opencontainers.image.source="https://github.com/poperigby/toolbox"
+LABEL org.opencontainers.image.description="PopeRigby's personal toolbox"
+LABEL com.github.containers.toolbox="true"
 
 # Install extra packages
 COPY extra-packages.txt /

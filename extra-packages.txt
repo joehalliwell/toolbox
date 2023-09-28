@@ -1,6 +1,7 @@
 bat
 bottom
 bubblewrap
+ccache
 chezmoi
 fd
 fontconfig

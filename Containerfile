@@ -16,8 +16,8 @@ RUN useradd -m paru
 USER paru
 
 # Build paru
-RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru; \
-    cd /tmp/paru; \
+RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
+    cd /tmp/paru && \
     makepkg -s --noconfirm
 
 # Switch back to root
@@ -27,7 +27,7 @@ USER root
 RUN userdel -r paru
 
 # Install paru
-RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst; \
+RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
     rm -rf /tmp/paru
 
 # Clean up cache

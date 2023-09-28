@@ -1,10 +1,10 @@
 FROM quay.io/toolbx-images/archlinux-toolbox:latest
 
 LABEL name="toolbox" \
-      maintainer="PopeRigby <poperigby@mailbox.org>" \
-      org.opencontainers.image.source="https://github.com/poperigby/toolbox" \
-      org.opencontainers.image.description="PopeRigby's personal toolbox" \
-      com.github.containers.toolbox="true"
+    maintainer="PopeRigby <poperigby@mailbox.org>" \
+    org.opencontainers.image.source="https://github.com/poperigby/toolbox" \
+    org.opencontainers.image.description="PopeRigby's personal toolbox" \
+    com.github.containers.toolbox="true"
 
 # Install extra packages
 COPY extra-packages.txt /
@@ -34,18 +34,14 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
 RUN pacman -Scc --noconfirm
 
 # Copy over scripts
-COPY scripts /usr/local/bin
-RUN chmod +x /usr/local/bin/_chezmoi_setup \
-    /usr/local/bin/ostree \
-    /usr/local/bin/systemctl
+COPY scripts /usr/local/bin/
+RUN chmod +x /usr/local/bin/*
 
 # Copy over /etc files
 COPY etc /etc
 
 # Symlink some external binaries, for convenience
-RUN ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/distrobox && \ 
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/xdg-open && \
-    ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/notify-send
+RUN BINARIES=("distrobox" "flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send"); \
+    for binary in "${BINARIES[@]}"; do \
+        ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$binary"; \
+    done

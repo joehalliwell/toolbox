@@ -24,5 +24,6 @@ qt6-wayland
 ripgrep
 rustup
 tealdeer
+ttf-jetbrains-mono-nerd
 wireplumber
 wl-clipboard

@@ -19,6 +19,7 @@ pipewire-jack
 progress
 python-pip
 python-pre-commit
+python-requests
 qt6-languageserver
 qt6-wayland
 ripgrep

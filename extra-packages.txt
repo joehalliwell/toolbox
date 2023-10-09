@@ -3,6 +3,7 @@ bottom
 bubblewrap
 ccache
 chezmoi
+eza
 fd
 fontconfig
 fribidi

@@ -28,3 +28,4 @@ tealdeer
 ttf-jetbrains-mono-nerd
 wireplumber
 wl-clipboard
+yt-dlp

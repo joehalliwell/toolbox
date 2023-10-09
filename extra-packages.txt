@@ -29,4 +29,5 @@ rustup
 tealdeer
 wireplumber
 wl-clipboard
+yazi
 yt-dlp

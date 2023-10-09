@@ -3,6 +3,7 @@ bottom
 bubblewrap
 ccache
 chezmoi
+dust
 eza
 fd
 fontconfig

@@ -1,6 +1,7 @@
 bat
 bottom
 bubblewrap
+cargo-audit
 ccache
 chezmoi
 dust

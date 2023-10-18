@@ -7,6 +7,7 @@ chezmoi
 dust
 eza
 fd
+ffmpeg
 fontconfig
 fribidi
 fzf

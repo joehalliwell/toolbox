@@ -29,6 +29,7 @@ qt6-wayland
 ripgrep
 rustup
 tealdeer
+vim
 wireplumber
 wl-clipboard
 yazi

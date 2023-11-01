@@ -21,6 +21,7 @@ npm
 p7zip
 pipewire-jack
 progress
+python-pipenv
 python-pipx
 python-pre-commit
 python-requests

@@ -21,9 +21,8 @@ npm
 p7zip
 pipewire-jack
 progress
+python-pipenv
 python-pipx
-python-pre-commit
-python-requests
 qt6-languageserver
 qt6-wayland
 ripgrep

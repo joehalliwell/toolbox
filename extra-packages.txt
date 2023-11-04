@@ -5,7 +5,6 @@ bubblewrap
 cargo-audit
 ccache
 chezmoi
-dust
 eza
 fd
 ffmpeg
@@ -24,8 +23,6 @@ pipewire-jack
 progress
 python-pipenv
 python-pipx
-qt6-languageserver
-qt6-wayland
 ripgrep
 rustup
 tealdeer

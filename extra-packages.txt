@@ -16,6 +16,7 @@ gdb
 git-lfs
 glow
 lazygit
+libxkbcommon
 neovim
 npm
 p7zip

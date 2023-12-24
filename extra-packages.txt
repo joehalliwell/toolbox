@@ -8,6 +8,7 @@ chezmoi
 eza
 fd
 ffmpeg
+fish
 fontconfig
 fribidi
 fzf

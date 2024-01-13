@@ -27,6 +27,7 @@ python-pipenv
 python-pipx
 ripgrep
 rustup
+speedtest-cli
 tealdeer
 wireplumber
 wl-clipboard

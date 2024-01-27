@@ -28,6 +28,7 @@ python-pipx
 ripgrep
 rustup
 tealdeer
+typst
 wireplumber
 wl-clipboard
 yazi

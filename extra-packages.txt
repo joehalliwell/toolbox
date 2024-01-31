@@ -22,6 +22,7 @@ neovim
 npm
 p7zip
 pipewire-jack
+pkgfile
 progress
 python-pipenv
 python-pipx

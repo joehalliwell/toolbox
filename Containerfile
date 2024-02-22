@@ -6,10 +6,10 @@ LABEL org.opencontainers.image.source="https://github.com/poperigby/toolbox"
 LABEL org.opencontainers.image.description="PopeRigby's personal toolbox"
 LABEL com.github.containers.toolbox="true"
 
-# Install extra packages
-COPY extra-packages.txt /
-RUN pacman -Syu --needed --noconfirm - < extra-packages.txt
-RUN rm /extra-packages.txt
+# Install packages
+COPY packages.txt /
+RUN pacman -Syu --needed --noconfirm - < packages.txt
+RUN rm /packages.txt
 
 # Create a non-root user for makepkg and switch to it
 RUN useradd -m paru

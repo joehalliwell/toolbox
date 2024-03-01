@@ -41,7 +41,7 @@ RUN chmod +x /usr/local/bin/*
 COPY etc /etc
 
 # Symlink some external binaries, for convenience
-RUN BINARIES=("distrobox" "flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send"); \
+RUN BINARIES=("distrobox" "flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send", "wezterm"); \
     for binary in "${BINARIES[@]}"; do \
         ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$binary"; \
     done

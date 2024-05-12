@@ -31,6 +31,7 @@ ripgrep
 rustup
 speedtest-cli
 tealdeer
+tk
 typst
 wireplumber
 wl-clipboard

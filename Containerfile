@@ -28,7 +28,7 @@ RUN AUR_PACKAGES=("quarto-cli-bin"); \
     done
 USER root
 
-# Clean up caches
+# Clean up caches to slim down image
 RUN pacman -Scc --noconfirm
 RUN paru -Scc --noconfirm
 
@@ -38,6 +38,9 @@ RUN chmod +x /usr/local/bin/*
 
 # Copy over /etc files
 COPY etc /etc
+
+# Generate extra locales (notable en_GB.UTF-8)
+RUN locale-gen
 
 # Symlink some external binaries, for convenience
 RUN BINARIES=("flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send"); \

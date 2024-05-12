@@ -21,8 +21,8 @@ toolbox create -i ghcr.io/joehalliwell/toolbox toolbox
 (from the project root)
 
 ```bash
-podman build --tag joehalliwell/toolbox .
-toolbox create -i localhost/joehalliwell/toolbox:latest --container joehalliwell/toolbox
+podman build --tag toolbox .
+toolbox create -i localhost/toolbox:latest local-toolbox
 ```
 
 ## TODO

@@ -24,7 +24,7 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
 USER nobody
 RUN AUR_PACKAGES=("quarto-cli-bin"); \
     for pkg in "${AUR_PACKAGES[@]}"; do \
-    paru -Syu "${pkg}"; \
+    paru -Syu --needed --noconfirm "${pkg}"; \
     done
 USER root
 

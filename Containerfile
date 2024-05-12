@@ -12,7 +12,8 @@ RUN pacman -Syu --needed --noconfirm - < packages.txt
 RUN rm /packages.txt
 
 # Build and install paru for working with AUR
-USER nobody
+RUN useradd -m paru
+USER paru
 RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
     cd /tmp/paru && \
     makepkg -s --noconfirm
@@ -21,12 +22,15 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
     rm -rf /tmp/paru
 
 # Install AUR-only-packages
-USER nobody
+RUN echo '"paru" ALL = (root) NOPASSWD:ALL' > /etc/sudoers.d/paru
+USER paru
 RUN AUR_PACKAGES=("quarto-cli-bin"); \
     for pkg in "${AUR_PACKAGES[@]}"; do \
     paru -Syu --needed --noconfirm "${pkg}"; \
     done
 USER root
+RUN rm /etc/sudoers.d/paru
+
 
 # Clean up caches to slim down image
 RUN pacman -Scc --noconfirm

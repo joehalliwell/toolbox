@@ -12,8 +12,7 @@ RUN pacman -Syu --needed --noconfirm - < packages.txt
 RUN rm /packages.txt
 
 # Create a non-root user for makepkg and switch to it
-RUN useradd -m paru
-USER paru
+USER nobody
 
 # Build paru
 RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
@@ -27,11 +26,8 @@ USER root
 RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
     rm -rf /tmp/paru
 
-# Clean up non-root user
-RUN userdel -r paru
-
 # Install AUR-only-packages
-USER paru
+USER nobody
 RUN AUR_PACKAGES=("quarto-cli-bin"); \
     for pkg in "${AUR_PACAKGES[@]}"; do \
     paru -Syu "${pkg}"; \
@@ -41,6 +37,7 @@ USER root
 
 # Clean up cache
 RUN pacman -Scc --noconfirm
+RUN paru -Scc --noconfirm
 
 # Copy over scripts
 COPY scripts /usr/local/bin/

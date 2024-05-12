@@ -18,11 +18,14 @@ toolbox create -i ghcr.io/joehalliwell/toolbox toolbox
 
 ### Build
 
+(from the project root)
+
 ```bash
 podman build --tag joehalliwell/toolbox .
+toolbox create -i localhost/joehalliwell/toolbox:latest --container joehalliwell/toolbox
 ```
 
 ## TODO
 
 - Chezmoi/dotfiles setup
-- Local development instructions
+- Pyenv setup

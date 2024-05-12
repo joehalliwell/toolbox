@@ -23,7 +23,7 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
 # Install AUR-only-packages
 USER nobody
 RUN AUR_PACKAGES=("quarto-cli-bin"); \
-    for pkg in "${AUR_PACAKGES[@]}"; do \
+    for pkg in "${AUR_PACKAGES[@]}"; do \
     paru -Syu "${pkg}"; \
     done
 USER root

@@ -31,6 +31,8 @@ RUN AUR_PACKAGES=("quarto-cli-bin"); \
 USER root
 RUN rm /etc/sudoers.d/paru
 
+# Remove paru user
+RUN userdel -r paru
 
 # Clean up caches to slim down image
 RUN pacman -Scc --noconfirm

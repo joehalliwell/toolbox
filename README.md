@@ -29,3 +29,7 @@ toolbox create -i localhost/toolbox:latest local-toolbox
 
 - Chezmoi/dotfiles setup
 - Pyenv setup
+
+## References
+
+https://www.ypsidanger.com/declaring-your-own-personal-distroboxes/

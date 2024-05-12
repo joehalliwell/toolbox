@@ -16,6 +16,7 @@ gcc
 gdb
 git-lfs
 glow
+just
 lazygit
 libxkbcommon
 neovim
@@ -24,13 +25,12 @@ p7zip
 pipewire-jack
 pkgfile
 progress
-python-pipenv
 python-pipx
+pyenv
 ripgrep
 rustup
 speedtest-cli
 tealdeer
-thefuck
 typst
 wireplumber
 wl-clipboard

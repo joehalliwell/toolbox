@@ -1,9 +1,9 @@
 FROM quay.io/toolbx-images/archlinux-toolbox:latest
 
 LABEL name="toolbox"
-LABEL maintainer="PopeRigby <poperigby@mailbox.org>"
-LABEL org.opencontainers.image.source="https://github.com/poperigby/toolbox"
-LABEL org.opencontainers.image.description="PopeRigby's personal toolbox"
+LABEL maintainer="Joe Halliwell <joe.halliwell@gmail.com>"
+LABEL org.opencontainers.image.source="https://github.com/joehalliwell/toolbox"
+LABEL org.opencontainers.image.description="Personal toolbox"
 LABEL com.github.containers.toolbox="true"
 
 # Install packages
@@ -23,12 +23,21 @@ RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
 # Switch back to root
 USER root
 
-# Clean up non-root user
-RUN userdel -r paru
-
 # Install paru
 RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
     rm -rf /tmp/paru
+
+# Clean up non-root user
+RUN userdel -r paru
+
+# Install AUR-only-packages
+USER paru
+RUN AUR_PACKAGES=("quarto-cli-bin"); \
+    for pkg in "${AUR_PACAKGES[@]}"; do \
+    paru -Syu "${pkg}"; \
+    done
+USER root
+
 
 # Clean up cache
 RUN pacman -Scc --noconfirm
@@ -41,7 +50,10 @@ RUN chmod +x /usr/local/bin/*
 COPY etc /etc
 
 # Symlink some external binaries, for convenience
-RUN BINARIES=("distrobox" "flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send", "wezterm"); \
+RUN BINARIES=("flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send"); \
     for binary in "${BINARIES[@]}"; do \
-        ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$binary"; \
+    ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$binary"; \
     done
+
+RUN pyenv install --verbose 3.12
+RUN pyenv global 3.12

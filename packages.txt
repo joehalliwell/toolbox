@@ -1,8 +1,10 @@
 asciinema
 bat
+broot
 bottom
 bubblewrap
 cargo-audit
+cmake
 ccache
 chezmoi
 eza
@@ -34,6 +36,6 @@ tealdeer
 tk
 typst
 wireplumber
-wl-clipboard
+#wl-clipboard
 yazi
 yt-dlp

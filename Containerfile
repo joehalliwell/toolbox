@@ -8,7 +8,7 @@ LABEL com.github.containers.toolbox="true"
 
 # Install packages
 COPY packages.txt /
-RUN pacman -Syu --needed --noconfirm - < packages.txt
+RUN pacman -Syu --needed --noconfirm $(grep -v "^#" packages.txt)
 RUN rm /packages.txt
 
 # Build and install paru for working with AUR

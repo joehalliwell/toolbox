@@ -6,8 +6,6 @@ bubblewrap
 cargo-audit
 cmake
 ccache
-chezmoi
-eza
 fd
 ffmpeg
 fish
@@ -36,6 +34,6 @@ tealdeer
 tk
 typst
 wireplumber
-#wl-clipboard
+wl-clipboard
 yazi
 yt-dlp

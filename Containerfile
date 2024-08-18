@@ -6,6 +6,10 @@ LABEL org.opencontainers.image.source="https://github.com/joehalliwell/toolbox"
 LABEL org.opencontainers.image.description="Personal toolbox"
 LABEL com.github.containers.toolbox="true"
 
+# Install keys
+RUN pacman-key --init
+RUN pacman -Sy --noconfirm archlinux-keyring
+
 # Install packages
 COPY packages.txt /
 RUN pacman -Syu --needed --noconfirm $(grep -v "^#" packages.txt)
@@ -24,7 +28,7 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
 # Install AUR-only-packages
 RUN echo '"paru" ALL = (root) NOPASSWD:ALL' > /etc/sudoers.d/paru
 USER paru
-RUN AUR_PACKAGES=("quarto-cli-bin"); \
+RUN AUR_PACKAGES=("quarto-cli-bin" "icaclient"); \
     for pkg in "${AUR_PACKAGES[@]}"; do \
     paru -Syu --needed --noconfirm "${pkg}"; \
     done
@@ -45,7 +49,7 @@ RUN chmod +x /usr/local/bin/*
 # Copy over /etc files
 COPY etc /etc
 
-# Generate extra locales (notable en_GB.UTF-8)
+# Generate extra locales (notably en_GB.UTF-8)
 RUN locale-gen
 
 # Symlink some external binaries, for convenience

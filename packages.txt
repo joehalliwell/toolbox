@@ -6,6 +6,7 @@ bubblewrap
 cargo-audit
 cmake
 ccache
+eza
 fd
 ffmpeg
 fish

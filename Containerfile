@@ -28,7 +28,7 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
 # Install AUR-only-packages
 RUN echo '"paru" ALL = (root) NOPASSWD:ALL' > /etc/sudoers.d/paru
 USER paru
-RUN AUR_PACKAGES=("quarto-cli-bin" "icaclient"); \
+RUN AUR_PACKAGES=("icaclient" "quarto-cli-bin" "vim" "visual-studio-code-bin"); \
     for pkg in "${AUR_PACKAGES[@]}"; do \
     paru -Syu --needed --noconfirm "${pkg}"; \
     done

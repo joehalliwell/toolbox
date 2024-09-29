@@ -1,3 +1,4 @@
+# Pacman packages
 asciinema
 bat
 broot
@@ -33,6 +34,7 @@ rustup
 speedtest-cli
 tealdeer
 tk
+toilet
 typst
 wireplumber
 wl-clipboard

@@ -6,14 +6,28 @@ LABEL org.opencontainers.image.source="https://github.com/joehalliwell/toolbox"
 LABEL org.opencontainers.image.description="Personal toolbox"
 LABEL com.github.containers.toolbox="true"
 
+################################################################################
+#  Base configuration
+################################################################################
+
+# Copy over /etc files
+COPY etc /etc
+
+# Generate extra locales (notably en_GB.UTF-8)
+RUN locale-gen
+
+################################################################################
+# Install packages
+################################################################################
+
+COPY packages /tmp/packages/
+
 # Install keys
 RUN pacman-key --init
 RUN pacman -Sy --noconfirm archlinux-keyring
 
-# Install packages
-COPY packages.txt /
-RUN pacman -Syu --needed --noconfirm $(grep -v "^#" packages.txt)
-RUN rm /packages.txt
+# Pacman
+RUN pacman -Syu --needed --noconfirm $(grep -v "^#" /tmp/packages/pacman.txt)
 
 # Build and install paru for working with AUR
 RUN useradd -m paru
@@ -28,8 +42,7 @@ RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
 # Install AUR-only-packages
 RUN echo '"paru" ALL = (root) NOPASSWD:ALL' > /etc/sudoers.d/paru
 USER paru
-RUN AUR_PACKAGES=("icaclient" "quarto-cli-bin" "vim" "visual-studio-code-bin"); \
-    for pkg in "${AUR_PACKAGES[@]}"; do \
+RUN for pkg in $(grep -v "^#" /tmp/packages/paru.txt); do \
     paru -Syu --needed --noconfirm "${pkg}"; \
     done
 USER root
@@ -41,19 +54,18 @@ RUN userdel -r paru
 # Clean up caches to slim down image
 RUN pacman -Scc --noconfirm
 RUN paru -Scc --noconfirm
+RUN rm -rf /tmp/packages
+
+################################################################################
+# Link with host
+################################################################################
 
 # Copy over scripts
 COPY scripts /usr/local/bin/
 RUN chmod +x /usr/local/bin/*
 
-# Copy over /etc files
-COPY etc /etc
-
-# Generate extra locales (notably en_GB.UTF-8)
-RUN locale-gen
-
 # Symlink some external binaries, for convenience
-RUN BINARIES=("flatpak" "podman" "rpm-ostree" "xdg-open" "notify-send"); \
+RUN BINARIES=("flatpak" "notify-send" "podman" "rpm-ostree" "xdg-open"); \
     for binary in "${BINARIES[@]}"; do \
-    ln -fs /usr/bin/distrobox-host-exec "/usr/local/bin/$binary"; \
+    ln -fs /usr/local/bin/host-exec "/usr/local/bin/$binary"; \
     done

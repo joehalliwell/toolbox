@@ -1,2 +1,0 @@
-#!/bin/bash
-chezmoi init --apply git@github.com:joehalliwell/dotfiles.git

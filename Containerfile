@@ -11,7 +11,7 @@ LABEL com.github.containers.toolbox="true"
 ################################################################################
 
 # Copy over /etc files
-COPY etc /etc
+COPY etc/locale.gen /etc/
 
 # Generate extra locales (notably en_GB.UTF-8)
 RUN locale-gen
@@ -20,11 +20,12 @@ RUN locale-gen
 # Install packages
 ################################################################################
 
-COPY packages /tmp/packages/
-
 # Install keys
 RUN pacman-key --init
-RUN pacman -Sy --noconfirm archlinux-keyring
+RUN pacman -Sy --noconfirm --debug archlinux-keyring
+
+# Copy over package lists
+COPY packages /tmp/packages/
 
 # Pacman
 RUN pacman -Syu --needed --noconfirm $(grep -v "^#" /tmp/packages/pacman.txt)

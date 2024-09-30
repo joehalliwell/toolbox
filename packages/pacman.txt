@@ -27,6 +27,7 @@ p7zip
 pipewire-jack
 pkgfile
 progress
+protobuf
 python-pipx
 pyenv
 ripgrep

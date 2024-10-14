@@ -1,4 +1,4 @@
-FROM quay.io/toolbx-images/archlinux-toolbox:latest
+FROM quay.io/toolbx/arch-toolbox:latest
 
 LABEL name="toolbox"
 LABEL maintainer="Joe Halliwell <joe.halliwell@gmail.com>"

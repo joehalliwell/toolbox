@@ -17,10 +17,13 @@ fzf
 gcc
 gdb
 git-lfs
+gobject-introspection
 glow
 just
 lazygit
+libadwaita
 libxkbcommon
+libolm
 neovim
 npm
 p7zip

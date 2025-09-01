@@ -19,6 +19,7 @@ gdb
 git-lfs
 gobject-introspection
 glow
+imagemagick
 just
 lazygit
 libadwaita

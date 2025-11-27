@@ -21,6 +21,7 @@ gdb
 git-lfs
 gobject-introspection
 glow
+graphviz
 imagemagick
 just
 lazygit
@@ -32,6 +33,7 @@ npm
 p7zip
 pipewire-jack
 pkgfile
+pnpm
 progress
 protobuf
 python-pipx

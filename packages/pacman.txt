@@ -14,7 +14,7 @@ fd
 ffmpeg
 fish
 fontconfig
-fortunemod
+fortune-mod
 fribidi
 fzf
 gcc

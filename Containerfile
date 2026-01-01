@@ -6,6 +6,8 @@ LABEL org.opencontainers.image.source="https://github.com/joehalliwell/toolbox"
 LABEL org.opencontainers.image.description="Personal toolbox"
 LABEL com.github.containers.toolbox="true"
 
+ARG AUR_HELPER=yay
+
 ################################################################################
 #  Base configuration
 ################################################################################
@@ -17,7 +19,7 @@ COPY etc/locale.gen /etc/
 RUN locale-gen
 
 ################################################################################
-# Install packages
+# Install official packages
 ################################################################################
 
 # Install keys
@@ -30,31 +32,36 @@ COPY packages /tmp/packages/
 # Pacman
 RUN pacman -Syu --needed --noconfirm $(grep -v "^#" /tmp/packages/pacman.txt)
 
-# Build and install paru for working with AUR
-RUN useradd -m paru
-USER paru
-RUN git clone https://aur.archlinux.org/paru-bin.git /tmp/paru && \
-    cd /tmp/paru && \
-    makepkg -s --noconfirm
-USER root
-RUN pacman -U --noconfirm /tmp/paru/paru-bin-*-x86_64.pkg.tar.zst && \
-    rm -rf /tmp/paru
+################################################################################
+# Install AUR packages
+################################################################################
+
+# Install an AUR helper and use it to install some awkward bits
+RUN useradd -m builder
+RUN echo '"builder" ALL = (root) NOPASSWD:ALL' > /etc/sudoers.d/builder
+USER builder
+
+# Build and install yay
+RUN git clone https://aur.archlinux.org/yay-bin.git /tmp/yay && \
+    cd /tmp/yay && \
+    makepkg -si --noconfirm && \
+    rm -rf /tmp/yay
 
 # Install AUR-only-packages
-RUN echo '"paru" ALL = (root) NOPASSWD:ALL' > /etc/sudoers.d/paru
-USER paru
 RUN for pkg in $(grep -v "^#" /tmp/packages/paru.txt); do \
-    paru -Syu --needed --noconfirm "${pkg}"; \
+    yay -Syu --needed --noconfirm "${pkg}"; \
     done
-USER root
-RUN rm /etc/sudoers.d/paru
 
-# Remove paru user
-RUN userdel -r paru
+RUN yay -Scc --noconfirm
+# RUN paru -Scc --noconfirm
+
+# Remove builder user
+USER root
+RUN rm /etc/sudoers.d/builder
+RUN userdel -r builder
 
 # Clean up caches to slim down image
 RUN pacman -Scc --noconfirm
-RUN paru -Scc --noconfirm
 RUN rm -rf /tmp/packages
 
 ################################################################################

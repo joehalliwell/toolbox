@@ -25,11 +25,6 @@ podman build --tag toolbox .
 toolbox create -i localhost/toolbox:latest local-toolbox
 ```
 
-## TODO
-
-- Chezmoi/dotfiles setup
-- Pyenv setup
-
 ## References
 
 https://www.ypsidanger.com/declaring-your-own-personal-distroboxes/

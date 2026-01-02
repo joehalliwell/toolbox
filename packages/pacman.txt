@@ -1,4 +1,6 @@
 # Pacman packages
+# NOTE: (for future self) systematically important rust packages should be added
+# here, rather than installed via cargo
 asciinema
 bat
 broot
@@ -7,8 +9,11 @@ bubblewrap
 cargo-audit
 cmake
 ccache
+cyme
 dog
+dust
 exempi
+expect
 eza
 fd
 ffmpeg
@@ -20,9 +25,11 @@ fzf
 gcc
 gdb
 git-lfs
+git-delta
 gobject-introspection
 glow
 graphviz
+inetutils
 imagemagick
 just
 lazygit
@@ -42,11 +49,16 @@ pyenv
 ripgrep
 rustup
 speedtest-cli
+starship
+tectonic
 tealdeer
 tk
 toilet
+tokei
 typst
 wireplumber
 wl-clipboard
-yazi
 yt-dlp
+uv
+viu
+zoxide

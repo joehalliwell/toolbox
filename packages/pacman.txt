@@ -38,6 +38,7 @@ libxkbcommon
 libolm
 neovim
 npm
+ouch
 p7zip
 pipewire-jack
 pkgfile

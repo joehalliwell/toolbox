@@ -53,6 +53,7 @@ speedtest-cli
 starship
 tectonic
 tealdeer
+television
 tk
 toilet
 tokei
@@ -60,6 +61,7 @@ typst
 wireplumber
 wl-clipboard
 yt-dlp
+yq
 uv
 viu
 zoxide

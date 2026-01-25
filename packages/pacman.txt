@@ -1,46 +1,58 @@
 # Pacman packages
 # NOTE: (for future self) systematically important rust packages should be added
 # here, rather than installed via cargo
+################################################################################
+# Sytem
+################################################################################
+avahi
+exempi
+ffmpeg
+inetutils
+fontconfig
+fribidi
+gobject-introspection
+imagemagick
+libadwaita
+libxkbcommon
+libolm
+nss-mdns
+pipewire-jack
+################################################################################
+# Devtools
+################################################################################
+cargo-audit
+cmake
+ccache
+gcc
+gdb
+rustup
+################################################################################
+# User
+################################################################################
 asciinema
 bat
 broot
 bottom
 bubblewrap
-cargo-audit
-cmake
-ccache
 cyme
 dog
 dust
-exempi
 expect
 eza
 fd
-ffmpeg
 fish
-fontconfig
 fortune-mod
-fribidi
 fzf
-gcc
-gdb
 git-lfs
 git-delta
-gobject-introspection
 glow
 graphviz
-inetutils
-imagemagick
 just
 lazygit
-libadwaita
-libxkbcommon
-libolm
 neovim
 npm
 ouch
 p7zip
-pipewire-jack
 pkgfile
 pnpm
 progress
@@ -48,7 +60,6 @@ protobuf
 python-pipx
 pyenv
 ripgrep
-rustup
 speedtest-cli
 starship
 tectonic
@@ -65,3 +76,4 @@ yq
 uv
 viu
 zoxide
+################################################################################

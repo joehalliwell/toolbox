@@ -53,7 +53,6 @@ RUN for pkg in $(grep -v "^#" /tmp/packages/paru.txt); do \
     done
 
 RUN yay -Scc --noconfirm
-# RUN paru -Scc --noconfirm
 
 # Remove builder user
 USER root
@@ -63,6 +62,14 @@ RUN userdel -r builder
 # Clean up caches to slim down image
 RUN pacman -Scc --noconfirm
 RUN rm -rf /tmp/packages
+
+################################################################################
+# Update system config (post-package installation)
+################################################################################
+
+# Idempotently update nsswitch.conf
+RUN grep -q "mdns_minimal" /etc/nsswitch.conf || \
+    sed -i '/^hosts:/ s/\(resolve\|dns\)/mdns_minimal [NOTFOUND=return] \1/' /etc/nsswitch.conf
 
 ################################################################################
 # Link with host

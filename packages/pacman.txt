@@ -29,6 +29,7 @@ sed
 cargo-audit
 cmake
 ccache
+flatpak-builder
 gcc
 gdb
 github-cli

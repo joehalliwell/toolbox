@@ -85,4 +85,5 @@ yt-dlp
 yq
 uv
 viu
+vim
 zoxide

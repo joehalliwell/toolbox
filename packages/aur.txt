@@ -1,4 +1,4 @@
-# Paru packages
+# AUR packages
 icaclient
 quarto-cli-bin
 visual-studio-code-bin

@@ -33,7 +33,11 @@ flatpak-builder
 gcc
 gdb
 github-cli
+npm
+pnpm
+pyenv
 rustup
+uv
 
 ################################################################################
 # User
@@ -60,15 +64,11 @@ just
 lazygit
 neovim
 nmap
-npm
 ouch
 p7zip
 pkgfile
-pnpm
 progress
 protobuf
-python-pipx
-pyenv
 ripgrep
 speedtest-cli
 starship
@@ -83,7 +83,6 @@ wireplumber
 wl-clipboard
 yt-dlp
 yq
-uv
 viu
 vim
 zoxide

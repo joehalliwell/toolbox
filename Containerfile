@@ -48,7 +48,7 @@ RUN git clone https://aur.archlinux.org/yay-bin.git /tmp/yay && \
     rm -rf /tmp/yay
 
 # Install AUR-only-packages
-RUN for pkg in $(grep -v "^#" /tmp/packages/paru.txt); do \
+RUN for pkg in $(grep -v "^#" /tmp/packages/aur.txt); do \
     yay -Syu --needed --noconfirm "${pkg}"; \
     done
 
